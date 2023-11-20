@@ -1,0 +1,5 @@
+# how to use
+python3 mk_poscar_by_c2c.py <cifディレクトリのパス>
+
+# example
+python3 mk_poscar_by_c2c.py /mnt/ssd_elecom_black_c2c_480G/cif/

@@ -1,0 +1,5 @@
+# how to use
+python3 mk_cif_num_name_dirs.py <cifディレクトリのパス>
+
+# example
+python3 mk_cif_num_name_dirs.py /mnt/ssd_elecom_black_c2c_480G/cif/
