@@ -1,4 +1,3 @@
-# for making cif_path_list
 import re
 import sys
 import time
@@ -23,7 +22,7 @@ def get_subdir_list(dir_list):
     return flatten_func(list(map(iterdir_func, dir_list)))
 
 
-args = sys.argv
+args = sys.argv  # receive a directory of cif/ path from command line
 p = Path(args[1])
 p_s_list = [p_sub_folder for p_sub_folder in p.glob('[1-9]')]
 p_ssss_list = get_subdir_list(get_subdir_list(get_subdir_list(p_s_list)))
@@ -54,6 +53,7 @@ poscar_folder_path_list_filter = list(map(poscar_folder_filter, p_ssss_list))
 poscar_folder_path_list = np.array(p_ssss_list)[poscar_folder_path_list_filter]
 print(f'len(poscar_folder_path_list): {len(poscar_folder_path_list)}')
 
+
 # convert Path to str
 cif_file_path_str_list = [str(p_cif) for p_cif in cif_file_path_list]
 poscar_file_path_str_list = [str(p_folder) + '/POSCAR' for p_folder in poscar_folder_path_list]
@@ -79,7 +79,7 @@ before = time.time()
 try:
     p = Pool(cpu_count() - 1)
     print("Now converting cif to POSCAR by cif2cell!!!")
-    list(tqdm(p.imap(wrap_cif2cell, params[0:10]), total=len(params)))
+    list(tqdm(p.imap(wrap_cif2cell, params), total=len(params)))
 finally:
     p.close()
     p.join()
