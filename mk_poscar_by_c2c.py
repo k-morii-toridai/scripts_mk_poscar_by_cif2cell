@@ -62,6 +62,7 @@ poscar_folder_path_str_list = [str(p_folder) for p_folder in poscar_folder_path_
 params = list(zip(cif_file_path_str_list, poscar_file_path_str_list, poscar_folder_path_str_list))
 
 
+# convert cif to POSCAR and write out a standard output and error log as 'cif2cell_log.txt' at each directory
 def cif2cell(cif_path, poscar_path, poscar_folder):
     with open(poscar_folder + '/cif2cell_log.txt', mode='w') as f:
         cp = subprocess.run(['cif2cell', cif_path, '-p', 'vasp', '-o', poscar_path, '--vasp-format=5'],
